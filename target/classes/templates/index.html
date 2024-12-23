@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Sender</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Send Email</h1>
+
+    <!-- Form to send email -->
+    <form th:action="@{/sendEmail}" method="post">
+        <label for="to">To:</label>
+        <input type="email" id="to" name="to" required/><br><br>
+
+        <label for="cc">CC (optional):</label>
+        <input type="email" id="cc" name="cc" multiple/><br><br>
+
+        <label for="bcc">BCC (optional):</label>
+        <input type="email" id="bcc" name="bcc" multiple/><br><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required/><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+		
+		<label for="attachment">Attachments (optional):</label>
+		<input type="file" id="attachment" name="attachment" multiple/><br><br>
+		
+        <button type="submit">Send Email</button>
+    </form>
+
+    <!-- Status message -->
+    <div th:if="${status}">
+        <p th:text="${status}"></p>
+    </div>
+</body>
+</html>
